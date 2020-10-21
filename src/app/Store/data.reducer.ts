@@ -1,13 +1,9 @@
-import { createReducer, on } from '@ngrx/store';
+import {Action, createReducer, on, State} from '@ngrx/store';
 import {
-  LoadData,
-  LoadDataSuccess,
-  LoadDataFailure,
-  AddData,
-  AddDataSuccess,
-  RemoveData,
-  RemoveDataSuccess,
-  ChangeData, ChangeDataSuccess, AddDataFailure, RemoveDataFailure, ChangeDataFailure
+  LoadData, LoadDataSuccess, LoadDataFailure,
+  AddData, AddDataSuccess, AddDataFailure,
+  RemoveData, RemoveDataSuccess, RemoveDataFailure,
+  ChangeData, ChangeDataSuccess, ChangeDataFailure
 } from './data.actions';
 
 export interface Item {
@@ -110,7 +106,7 @@ const DataReducer = createReducer(
       loading: false
     };
   })
-  );
-export function DataReducerMain(state, action): any {
+);
+export function DataReducerMain(state, action: Action): object {
   return DataReducer(state, action);
 }

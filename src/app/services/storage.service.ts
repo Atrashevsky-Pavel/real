@@ -7,11 +7,20 @@ import { Injectable } from '@angular/core';
 export class StorageService {
   private key = 'storage';
   getStorage(): any[] {
-    return  JSON.parse(localStorage.getItem(this.key));
+    if (localStorage.getItem(this.key)) {
+      return  JSON.parse(localStorage.getItem(this.key));
+    }else {
+        return [];
+    }
   }
   addItemStorage(value): any[] {
-    const memory = JSON.parse(localStorage.getItem(this.key));
+    let memory;
     let id;
+    if (localStorage.getItem(this.key)) {
+       memory = JSON.parse(localStorage.getItem(this.key));
+    } else {
+      memory = [];
+    }
     (memory.length) ? id = memory[memory.length - 1].id + 1 : id = 1;
     memory.push({
       ...value,
@@ -45,7 +54,6 @@ export class StorageService {
        item.text = value.text;
       }
     });
-    console.log(memory);
     localStorage.setItem(this.key, JSON.stringify(memory));
     return memory;
   }

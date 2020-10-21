@@ -8,3 +8,11 @@
     margin-right: 6px;
   }
 }
+input, textarea {
+  &.ng-invalid.ng-touched {
+    border: 2px solid red;
+  }
+  &.ng-valid.ng-touched {
+    border: 2px solid green;
+  }
+}

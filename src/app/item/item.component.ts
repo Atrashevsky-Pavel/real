@@ -1,32 +1,26 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Item} from '../Store/data.reducer';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {AppState} from '../app.component';
+import {ChangeData, RemoveData} from '../Store/data.actions';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+
+export class ItemComponent {
   @Input() itemInside: Item;
-  @Output() idDelete: EventEmitter<number> = new EventEmitter<number>();
-  @Output() changeInside: EventEmitter<number> = new EventEmitter<number>();
-  form: FormGroup;
   formShow = false;
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      title: new FormControl(this.itemInside.title, Validators.required),
-      text: new FormControl(this.itemInside.text, Validators.required)
-    });
-  }
-  submit(): void {
-    const item = this.form.value;
-    item.id = this.itemInside.id;
-    this.changeInside.emit(item);
+  constructor(private store: Store<AppState>) {}
+  change(value): void {
+    value.id = this.itemInside.id;
+    this.store.dispatch(ChangeData(value));
     this.formShow = false;
   }
   delete(id: number): void {
-    this.idDelete.emit(id);
+    this.store.dispatch(RemoveData({id}));
   }
   formSwitch(): void {
     this.formShow = !this.formShow;

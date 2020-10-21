@@ -5,24 +5,7 @@
   <div nz-col nzSpan="12" class="bodyCenterDiv">
     <p> Title: {{itemInside.title}}</p>
     <p>Text: {{itemInside.text}}</p>
-    <form class = "formChange" nz-form
-          *ngIf="formShow"
-          [formGroup] = "form"
-          (ngSubmit) = "submit()">
-      <nz-form-item>
-        <nz-form-label nzFor="Title">Title</nz-form-label>
-        <nz-form-control>
-          <input nz-input size="40" name = "Title" formControlName = "title" type="text">
-        </nz-form-control>
-      </nz-form-item >
-      <nz-form-item>
-        <nz-form-label nzFor="Text">Text</nz-form-label>
-        <nz-form-control>
-          <textarea cols="43" rows="3" name="Text" formControlName="text" nz-input  placeholder="write text"></textarea>
-        </nz-form-control>
-      </nz-form-item >
-      <button [disabled]="form.invalid"  nz-button class="login-form-button login-form-margin" [nzType]="'primary'" type="submit">Submit</button>
-    </form>
+
   </div>
   <div nz-col nzSpan="6" class="bodyCenterDiv">
     <button nz-button nzType="primary"
@@ -39,4 +22,14 @@
   </div>
 </div>
 
+
+<nz-modal [(nzVisible)]="formShow" nzFooter="null"
+          nzClosable = "false"
+          nzTitle="Change this entry" (nzOnCancel)="formSwitch()">
+  <app-form
+    (closeModal)="formSwitch()"
+    [formState] = "itemInside"
+    (changeInside) = "change($event)"
+  ></app-form>
+</nz-modal>
 

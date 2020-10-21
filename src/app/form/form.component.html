@@ -1,13 +1,14 @@
 <form id = "data" nz-form
              [formGroup] = "form"
              (ngSubmit) = "submit()">
-
+  <p>There are at least three characters</p>
 <nz-form-item>
   <nz-form-label nzFor="Title">Title</nz-form-label>
   <nz-form-control>
     <input nz-input size="40" name = "Title" formControlName = "title" type="text">
   </nz-form-control>
-</nz-form-item >
+</nz-form-item>
+<p>There are at least six characters</p>
 <nz-form-item>
   <nz-form-label nzFor="Text">Text</nz-form-label>
   <nz-form-control>

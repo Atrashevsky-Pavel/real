@@ -27,15 +27,7 @@ export class AppComponent implements OnInit{
     this.store.dispatch(LoadData());
   }
   add(value): void {
-    console.log(value);
     this.store.dispatch(AddData(value));
-  }
-
-  deleteItem(id: number): void {
-    this.store.dispatch(RemoveData({id}));
-  }
-  change(value): void {
-     this.store.dispatch(ChangeData(value));
   }
   formSwitch(): void {
     this.formShow = !this.formShow;

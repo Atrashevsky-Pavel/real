@@ -13,8 +13,6 @@
 
 <app-item
   *ngFor ="let item of data$ | async"
-  (idDelete)="deleteItem($event)"
-  (changeInside) = "change($event)"
   [itemInside] = "item"
 ></app-item>
 
