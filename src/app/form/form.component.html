@@ -1,0 +1,22 @@
+<form id = "data" nz-form
+             [formGroup] = "form"
+             (ngSubmit) = "submit()">
+
+<nz-form-item>
+  <nz-form-label nzFor="Title">Title</nz-form-label>
+  <nz-form-control>
+    <input nz-input size="40" name = "Title" formControlName = "title" type="text">
+  </nz-form-control>
+</nz-form-item >
+<nz-form-item>
+  <nz-form-label nzFor="Text">Text</nz-form-label>
+  <nz-form-control>
+    <textarea cols="43" rows="3" name="Text" formControlName="text" nz-input></textarea>
+  </nz-form-control>
+</nz-form-item >
+</form>
+<div class="formButtons">
+  <button nz-button [nzType]="'primary'"  type="submit" form="data" [disabled]="form.invalid">Submit</button>
+  <button nz-button (click)="close()" nzType="primary" nzDanger >Close</button>
+</div>
+

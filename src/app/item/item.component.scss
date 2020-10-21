@@ -1,0 +1,34 @@
+.item {
+  padding: 20px;
+  border: 1px solid black;
+  button {
+    margin: 10px;
+  }
+}
+.bodySideDiv {
+  background-color: blue;
+  h2 {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+  }
+}
+.bodyCenterDiv {
+  background-color: #0507a9;
+  border-bottom: 1px solid white;
+  overflow-wrap: normal;
+  text-align: justify;
+  p {
+    color: white;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  button {
+    margin: 30px 20px 10px 10px;
+  }
+}
+.formChange {
+  margin-left: 20px;
+  margin-top: 20px;
+}
